@@ -40,3 +40,10 @@ Using curl to POST the username and password and get the flag
 
 *[main][/goinfre/mashad/projects/darkly]$ 
 ```
+
+# Prevention
+	- *Disallow Sensitive Paths:* Update your robots.txt file to disallow access to sensitive directories like /whatever and /.hidden. This will prevent search engines and web crawlers from indexing and accessing these paths.
+
+	- *Protect Sensitive Files:* If possible, move sensitive files like htpasswd outside of the web server's public directory. This prevents direct access to such files through the web browser.
+
+	- *Hash and Salt Passwords:* Ensure that user passwords are hashed and salted before storing them in the database. This makes it significantly harder for attackers to retrieve the original passwords even if they manage to access the hashed versions.
