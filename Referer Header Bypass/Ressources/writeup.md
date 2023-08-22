@@ -3,10 +3,12 @@
 Visting Home page we find a link in `© BornToSec` in the footer of the page.
 
 If we checked the source code of the html file we find this string
-`<!--
+
+```html
+<!--
 You must come from : "https://www.nsa.gov/".
 -->
-`
+```
 
 As it seems that we need to change to referer of the request so that it the webserver thinks that the request is comming from `https://www.nsa.gov/`
 
@@ -33,8 +35,9 @@ As it seems that we need to change to referer of the request so that it the webs
 ```
 
 # Prevent
-	- *Referrer Header Check:*Implement a server-side check that verifies the Referer header of incoming requests. If the request is supposed to come from a specific source, make sure it matches that source. If it doesn't, deny the request.
 
-	- *Use Same-Origin Policy:* Leverage the Same-Origin Policy to prevent unauthorized cross-origin requests. Configure your server to disallow requests from domains other than your own.
+- **Referrer Header Check:** Implement a server-side check that verifies the Referer header of incoming requests. If the request is supposed to come from a specific source, make sure it matches that source. If it doesn't, deny the request.
 
-	- *Cross-Origin Resource Sharing (CORS):* If you need to allow certain cross-origin requests, set up CORS properly. Specify which origins are allowed to access your resources by configuring CORS headers on the server.
+- **Use Same-Origin Policy:** Leverage the Same-Origin Policy to prevent unauthorized cross-origin requests. Configure your server to disallow requests from domains other than your own.
+
+- **Cross-Origin Resource Sharing (CORS):** If you need to allow certain cross-origin requests, set up CORS properly. Specify which origins are allowed to access your resources by configuring CORS headers on the server.

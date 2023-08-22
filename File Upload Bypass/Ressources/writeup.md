@@ -30,11 +30,12 @@ So what we are going to do is to change the upload type to the allowed uploading
 And we got the flag.
 
 
-# Prevent
-	- *File Type Validation:* Implement strict file type validation on the server side. Only allow uploading of specific file types that are necessary for your application. This validation should be based on both file extension and MIME type.
+# Prevention
 
-	- *Content Disposition:*Set the Content-Disposition header to ensure that uploaded files are treated as attachments rather than executable files. This prevents browsers from interpreting uploaded files as scripts.
+- **File Type Validation:** Implement strict file type validation on the server side. Only allow uploading of specific file types that are necessary for your application. This validation should be based on both file extension and MIME type.
 
-	- *Rename Files:* Rename uploaded files to a secure format that does not include user-provided content or known extensions. This can prevent attackers from exploiting file name-based vulnerabilities.
+- **Content Disposition:** Set the Content-Disposition header to ensure that uploaded files are treated as attachments rather than executable files. This prevents browsers from interpreting uploaded files as scripts.
 
-	- *Server-Side Checks:* Perform server-side checks to ensure that the uploaded file is indeed an image file. Use libraries or tools designed for image validation to ensure that the file is not maliciously crafted to exploit vulnerabilities.
+- **Rename Files:** Rename uploaded files to a secure format that does not include user-provided content or known extensions. This can prevent attackers from exploiting file name-based vulnerabilities.
+
+- **Server-Side Checks:** Perform server-side checks to ensure that the uploaded file is indeed an image file. Use libraries or tools designed for image validation to ensure that the file is not maliciously crafted to exploit vulnerabilities.
