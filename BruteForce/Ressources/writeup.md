@@ -58,3 +58,10 @@ Now we will try to login to using those creds and get the flag.
 
 Finaly
 `The flag is : b3a6e43ddf8b4bbb4125e5e7d23040433827759d4de1c04ea63907479a80a6b2 `
+
+# Prevention
+- **Account Lockout:** Implement an account lockout mechanism that temporarily locks an account after a certain number of unsuccessful login attempts. This helps mitigate brute-force attacks by preventing attackers from continuously trying different passwords.
+
+- **CAPTCHA:** Use CAPTCHA challenges during the login process to differentiate between human users and automated scripts. This can make it significantly harder for attackers to automate brute-force attempts.
+
+- **Rate Limiting:** Implement rate limiting on login attempts. Limit the number of login requests from the same IP address or user within a certain time frame. This can slow down brute-force attacks and discourage attackers.
